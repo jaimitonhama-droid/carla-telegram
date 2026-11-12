@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Carla</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* Container principal mobile-first */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        /* Foto no topo com fade para branco */
+        .photo-section {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-section img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 65vh;
+            max-height: 520px;
+        }
+
+        /* Gradiente fade da foto para o fundo branco */
+        .photo-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 160px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,1) 100%);
+            pointer-events: none;
+        }
+
+        /* Secção do perfil */
+        .profile-section {
+            text-align: center;
+            padding: 0 20px;
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .name-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .name-row h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.3px;
+        }
+
+        /* Selo de verificado estilo Instagram/Meta */
+        .verified-badge {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: #666666;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+
+        /* Botão estilo pill preto */
+        .btn-container {
+            width: 100%;
+            padding: 0 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn-telegram {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background: #1a1a1a;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            position: relative;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .btn-telegram:hover {
+            background: #333333;
+        }
+
+        .btn-telegram:active {
+            transform: scale(0.97);
+            background: #333333;
+        }
+
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .btn-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .btn-text {
+            flex: 1;
+            text-align: center;
+            padding-right: 36px;
+        }
+
+        /* Rodapé discreto */
+        .footer {
+            margin-top: auto;
+            padding: 30px 20px 24px;
+            text-align: center;
+        }
+
+        .footer span {
+            font-size: 13px;
+            color: #bbbbbb;
+            letter-spacing: 0.5px;
+        }
+
+        .footer span strong {
+            color: #999999;
+            font-weight: 600;
+        }
+
+        /* Responsivo para telas muito pequenas */
+        @media screen and (max-width: 360px) {
+            .name-row h1 {
+                font-size: 22px;
+            }
+            .subtitle {
+                font-size: 14px;
+            }
+            .btn-telegram {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            .photo-section img {
+                height: 55vh;
+            }
+        }
+
+        /* Telas maiores (tablets) */
+        @media screen and (min-width: 481px) {
+            .container {
+                max-width: 480px;
+            }
+            body {
+                background: #f5f5f5;
+            }
+            .container {
+                background: #ffffff;
+                box-shadow: 0 0 40px rgba(0,0,0,0.08);
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Foto da Carla com fade -->
+        <div class="photo-section">
+            <img src="carla.jpg" alt="Carla">
+        </div>
+
+        <!-- Nome + verificado + subtítulo -->
+        <div class="profile-section">
+            <div class="name-row">
+                <h1>Carla</h1>
+                <!-- Selo verificado estilo Instagram/Meta com bordas onduladas -->
+                <svg class="verified-badge" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0 L14.1 3.3 L17.7 2.1 L18.3 5.9 L22.1 6.9 L21 10.5 L24 12.9 L21.6 15.6 L23.1 19.1 L19.5 19.8 L19.2 23.6 L15.5 22.8 L12.9 25.5 L10.5 22.8 L6.8 23.6 L6.5 19.8 L2.9 19.1 L4.4 15.6 L2 12.9 L5 10.5 L3.9 6.9 L7.7 5.9 L8.3 2.1 L11.9 3.3 Z" 
+                        fill="#1DA1F2" transform="scale(0.92) translate(1, 0)"/>
+                    <path d="M9.5 12.5 L11 14.5 L15.5 9.5" 
+                        stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </div>
+            <p class="subtitle">clique nisso, bobinho</p>
+        </div>
+
+        <!-- Botão do Telegram -->
+        <div class="btn-container">
+            <a href="https://t.me/carla493" class="btn-telegram">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="tg-grad" x1="24" y1="2" x2="24" y2="46" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#37AEE2"/>
+                                <stop offset="1" stop-color="#1E96C8"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="24" cy="24" r="22" fill="url(#tg-grad)"/>
+                        <path d="M12.5 23.8l3.8 1.4 1.5 4.8c.2.6.9.8 1.4.4l2.2-1.8c.4-.4 1-.4 1.4 0l4 2.9c.5.4 1.2.1 1.3-.5l2.4-11.5c.2-.7-.5-1.3-1.1-1l-16.9 7c-.7.3-.6 1.1 0 1.3z" fill="white"/>
+                        <path d="M18.1 25l.5 4.3c.1 0 .3 0 .4-.1l1.9-1.8-2.8-2.4z" fill="#B0BEC5" opacity="0.7"/>
+                        <path d="M18.6 25.4l6.8-4.2c.3-.2.3.1.1.2l-5.5 5-.2 2.8" fill="#CFD8DC" opacity="0.5"/>
+                    </svg>
+                </div>
+                <span class="btn-text">basta clicar</span>
+            </a>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="footer">
+            <span>carla<strong>.bio</strong></span>
+        </div>
+
+    </div>
+
+</body>
+</html>
